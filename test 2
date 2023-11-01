@@ -1,0 +1,18 @@
+#!/usr/bin/python3
+import random
+#a=int (input())
+#b=int (input(random.randint (-110,100))) 
+a=9
+b=50
+c=3
+min=a
+if min>b:
+    min=b
+if min>c:
+    min=c
+print (min)
+#if a>=b:
+    #if a<=b:
+        #print ("A")
+    #else:
+        #print ("B")
