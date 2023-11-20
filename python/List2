@@ -1,0 +1,17 @@
+list = []
+print ("введите 1 чтобы ввести новое имя")
+print ("введите 2 чтобы получить список всех имен")
+print ("введите 3 чтобы выйти из программы")
+while True:
+    stuff = input("введите число:")
+    if stuff=="3":
+        print ("успешный выход")
+        break
+    if stuff=="2":
+        print ("список всех имен:")
+        print (list)
+    if stuff=="1":
+        name = input("введите имя сотрудника:")
+        lenght = len(list)
+        list.append(name)
+        print ("имя успешно добавлено")
