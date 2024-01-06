@@ -1,17 +1,73 @@
-list = []
-print ("введите 1 чтобы ввести новое имя")
-print ("введите 2 чтобы получить список всех имен")
-print ("введите 3 чтобы выйти из программы")
+list = ["Алексей", "Борис"]
+print ("введите 1 чтобы ввести новое имя\nввeдитe 2 чтобы получить список всех имен")
+print ("введите 3 чтобы удалить имя по индексу\nввeдитe 4 чтобы отредактировать имя")
+print ("введите 5 чтобы удалить конкретное имя\nввeдитe 6 чтобы найти конкретное имя в списке")
+print ("введите 7 для выхода из программы")
 while True:
     stuff = input("введите число:")
-    if stuff=="3":
-        print ("успешный выход")
-        break
-    if stuff=="2":
-        print ("список всех имен:")
-        print (list)
-    if stuff=="1":
-        name = input("введите имя сотрудника:")
-        lenght = len(list)
-        list.append(name)
-        print ("имя успешно добавлено")
+    if not stuff.isdigit():
+        print ("это не цифра")
+    else:
+        stuff = int(stuff)
+        if stuff > 0 and stuff < 8:
+            if stuff == 7:
+                print ("успешный выход")
+                break
+            if stuff == 6:
+                name = input("введите имя для поиска:")
+                if name in list:
+                    length = len(list) - 1 
+                    i = 0
+                    while i <= length:
+                        if list[i] == name:
+                            index = i
+                        i = i + 1
+                    print ("Имя есть в списке! Его индекс: " + str(index))
+                else:
+                    print ("такого имени нет в списке")
+            if stuff == 5:
+                name = (input("введите имя для удаления : "))
+                list.remove(name) 
+                print ("имя успешно удалено")
+            if stuff == 4:
+                length = len(list) 
+                print ("самый последний индекс: " + str(length)) #показывает колличество индексов
+                print (list) 
+                index = int((input("введите индекс для peдaктиpoвaния : ")))
+                #сделать проверку на целые и положительные числа 
+                index = index-1  
+                length = length-1
+                if index <= length:
+                    name = (input("введите отредактированное имя пользователя : "))
+                    list[index]=name
+                    print ("успешное редактирование")
+            if stuff == 3:
+                #мы создаем переменную length и записываем в нее колличесто элементов содержащихся 
+                #в списке list, длинну списка (колличество элементов) считаем с помощью функции len() 
+                length = len(list) 
+                length = length - 1 # -= попробовать 
+                print ("самый последний индекс: " + str(length)) #показывает колличество индексов 
+                index = (input("введите индекс для удаления : "))
+                if int(index) <= length: #команда которая не дает вводить значение индекса больше, чем есть
+                    list.pop(int(index)) 
+                    print ("индекс удален успешно")
+                else:
+                    print ("такого индекса не существует")
+            if stuff == 2:
+                print ("список всех имен:")
+                print (list)
+            if stuff == 1:
+                name = input("введите имя сотрудника:")
+                if name not in list: 
+                    list.append(name) #добавление имени в список
+                    length = len(list) - 1 
+                    i = 0
+                    while i <= length:
+                        if list[i] == name:
+                            index = i
+                        i = i + 1
+                    print ("имя успешно добавлено c индексом: " + str(index))
+                else:
+                    print ("имя уже добавлено в список, вы можете eгo редактировать или удалить")
+        else:
+            print ("введное число отсутствует в меню")
